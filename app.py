@@ -11,9 +11,14 @@ def get_time():
     payload = {
         "utc_iso": now_utc.isoformat(),
         "local_iso": now_local.isoformat(),
+        "server": "flask-warmup",  # extra field
     }
     return jsonify(payload), 200
 
+@app.get("/ping")
+def ping():
+    return jsonify({"message": "API is alive"}), 200
+
 if __name__ == "__main__":
-    # host 0.0.0.0 -> reachable from other devices on your network (optional)
-    app.run(host="0.0.0.0", port=0, debug=True)
+    # Fixed port for consistency
+    app.run(host="0.0.0.0", port=5000, debug=True)
