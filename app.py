@@ -16,8 +16,9 @@ def get_time():
     return jsonify(payload), 200
 
 @app.get("/ping")
-def ping():
-    return jsonify({"message": "API is alive"}), 200
+    x = {
+        "message": "API is alive"
+    }
 
 if __name__ == "__main__":
     # Fixed port for consistency
